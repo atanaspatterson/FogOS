@@ -16,6 +16,24 @@ void insertion_sort_int(int arr[], int size) {
 	}
 }
 
+int binary_search(int arr[], int target, int size) {
+	int low = 0;
+	int high = size - 1;
+	
+	while (low <= high) {
+		int mid = ((high - low) / 2) + low;
+		int currentValue = arr[mid];
+		if (currentValue == target) {
+			return mid;
+		} if (currentValue < target) {
+			low = mid + 1;
+		} else {
+			high = mid - 1;
+		}
+	}
+	return -1;
+}
+
 void print_array(int arr[], int size) {
 	for (int i = 0; i < size; i++) {
     	printf("%d ", arr[i]);
