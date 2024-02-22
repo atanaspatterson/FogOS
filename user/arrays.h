@@ -18,7 +18,7 @@ void array_intersection(int* arr1, int* arr2, int size);
 
 void add_at_index(int* arr1, int index, int value, int size);
 
-void delete_at_index(int* arr1, int index, int size);
+int* delete_at_index(int* arr1, int index, int size);
 
 
 #endif

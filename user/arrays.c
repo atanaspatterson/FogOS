@@ -2,6 +2,7 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 #include "arrays.h"
+#include <stddef.h>
 
 // insertion sort
 void insertion_sort_int(int arr[], int size) {
@@ -39,6 +40,29 @@ void print_array(int arr[], int size) {
     	printf("%d ", arr[i]);
 	}
 	printf("\n");
+}
+
+int* delete_at_index(int arr[], int index, int size) {
+  // Allocate a new array with size - 1
+  int* new_arr = (int*)malloc((size - 1) * sizeof(int));
+  if (new_arr == NULL) {
+    printf("Error: Could not allocate memory for new array.\n");
+    return NULL;
+  }
+  
+  // Copy elements before the deleted index
+  for (int i = 0; i < index; i++) {
+    new_arr[i] = arr[i];
+  }
+  // Skip the element at the specified index
+  int j = index + 1; // index to copy from original array
+
+  // Copy elements after the deleted index
+  for (int i = index; i < size - 1; i++, j++) {
+    new_arr[i] = arr[j];
+  }
+  // Free the original array memory
+  return new_arr;
 }
 
 

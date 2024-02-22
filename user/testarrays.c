@@ -18,8 +18,10 @@ int main()
 	// test binary search
 	printf("Find 7: %d\n", binary_search(testarray, 7, 9)); // returns the index of 7
 	printf("Find 8: %d\n", binary_search(testarray, 8, 9)); // returns -1 (not in array)
-
-  
+	printf("hi");
+	int* new_arr = delete_at_index(testarray, 2, 9);
+	printf("yo");
+	print_array(new_arr, 8);
 
   
   return 0;
