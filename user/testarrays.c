@@ -1,6 +1,6 @@
 #include "kernel/types.h"
 #include "user/user.h"
-//#include "arrays.h"
+#include "arrays.h"
 #include "arrays.c" 
 
 
@@ -30,7 +30,11 @@ int main()
 	arr[4] = 5;
 	print_array(arr, 5);
 	delete_at_index(&arr, 2, 5);
-	print_array(arr, 4); // should print the array without 3
+	print_array(arr, 4); // should print the array without 3	
+
+	// test add at index
+	add_at_index(&arr, 3, 2, 4);
+	print_array(arr, 5); // should print the array with 3
 
 	
 
