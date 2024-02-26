@@ -4,8 +4,7 @@
 
 
 // test file
-int main()
-{
+int main(int argc, char *argv) {
 	// test insertion sort
 	int testarray[] = {1, 4, 18, 3, 34, 6, 7, 4, 9};
 	printf("Original: ");
@@ -48,11 +47,5 @@ int main()
 	int *union_arr = array_union(arr, testarray, arr_size, 9, &union_size);
 	printf("Union: ");
 	print_array(union_arr, union_size);
-	
-
-	
-
-
-  
-  return 0;
+  	return 0;
 }
