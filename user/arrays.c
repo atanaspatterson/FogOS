@@ -43,42 +43,42 @@ void print_array(int* arr, int size) {
 	printf("\n");
 }
 
-void delete_at_index(int** arr, int index, int size) {
-    if (index < 0 || index >= size) {
+void delete_at_index(int** arr, int index, int *size) {
+    if (index < 0 || index >= *size) {
         printf("Invalid index\n");
         return;
     }
 
-    int* new_arr = (int*)malloc((size - 1) * sizeof(int));
+    int* new_arr = (int*)malloc((*size - 1) * sizeof(int));
     if (new_arr == NULL) {
     	printf("malloc() could not be called\n");
         return;
     }
 
     memcpy(new_arr, *arr, index * sizeof(int));
-    memcpy(new_arr + index, *arr + index + 1, (size - index - 1) * sizeof(int));
+    memcpy(new_arr + index, *arr + index + 1, (*size - index - 1) * sizeof(int));
     free(*arr);
-
+	*size = *size - 1;
     *arr = new_arr;
 }
 
-void add_at_index(int** arr, int value, int index, int size) {
-    if (index < 0 || index > size) {
-        printf("Error: Invalid index.\n");
+void add_at_index(int** arr, int value, int index, int *size) {
+    if (index < 0 || index > *size) {
+        printf("Invalid index.\n");
         return;
     }
 
-    int* new_arr = (int*)malloc((size + 1) * sizeof(int));
+    int* new_arr = (int*)malloc((*size + 1) * sizeof(int));
     if (new_arr == NULL) {
-        printf("Error: Could not allocate memory.\n");
+        printf("malloc() could not be called\n");
         return;
     }
 
     memcpy(new_arr, *arr, index * sizeof(int));
     new_arr[index] = value;
-    memcpy(new_arr + index + 1, *arr + index, (size - index) * sizeof(int));
+    memcpy(new_arr + index + 1, *arr + index, (*size - index) * sizeof(int));
     free(*arr);
-
+    *size = *size + 1;
     *arr = new_arr;
 }
 
@@ -88,6 +88,10 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 
 	int min = size1 < size2 ? size1: size2;
 	int* intersection = (int*)malloc(sizeof(int) * min);
+	if (intersection == NULL) {
+		printf("malloc could not be called\n");
+		return NULL;
+	}
 
 	int i = 0, 
 	j = 0, 
@@ -104,8 +108,10 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 	        j++;
 	    }
 	}
-
+	
 	*new_size = k;
 	return intersection;	 
 }
+
+
 

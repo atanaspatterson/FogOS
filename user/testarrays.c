@@ -28,13 +28,14 @@ int main()
 	arr[2] = 3;
 	arr[3] = 4;
 	arr[4] = 5;
-	print_array(arr, 5);
-	delete_at_index(&arr, 2, 5);
-	print_array(arr, 4); // should print the array without 3	
+	int arr_size = 5;
+	print_array(arr, arr_size);
+	delete_at_index(&arr, 2, &arr_size);
+	print_array(arr, arr_size); // should print the array without 3	
 
 	// test add at index
-	add_at_index(&arr, 3, 2, 4);
-	print_array(arr, 5); // should print the array with 3
+	add_at_index(&arr, 3, 2, &arr_size);
+	print_array(arr, arr_size); // should print the array with 3
 
 	// test array intersection
 	int intersection_size = 0;
