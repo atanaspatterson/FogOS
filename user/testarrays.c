@@ -40,7 +40,14 @@ int main()
 	// test array intersection
 	int intersection_size = 0;
 	int *intersection = array_intersection(arr, testarray, 5, 9, &intersection_size);
+	printf("Intersection: ");
 	print_array(intersection, intersection_size); // should print 1, 3 ,4
+
+	// test array union
+	int union_size = 0;
+	int *union = array_union(arr, testarray, arr_size, 9, &union_size);
+	printf("Union: ");
+	print_array(union, union_size);
 	
 
 	

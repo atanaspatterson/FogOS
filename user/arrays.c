@@ -93,9 +93,9 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 		return NULL;
 	}
 
-	int i = 0, 
-	j = 0, 
-	k = 0;
+	int i = 0; 
+	int j = 0; 
+	int k = 0;
 
 	while (i < size1 && j < size2) {
 		if (arr1[i] == arr2[j]) {
@@ -111,6 +111,43 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 	
 	*new_size = k;
 	return intersection;	 
+}
+
+int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size) {
+	sort_int_array(arr1, size1);
+	sort_int_array(arr2, size2);
+
+	int max = size1 > size2 ? size1: size2;
+	int* union_arr = (int*)malloc(sizeof(int) * max);
+	if (union_a == NULL) {
+		printf("malloc could not be called\n");
+		return NULL;
+	}
+
+	int i = 0; 
+	int j = 0;
+	int k = 0;
+
+	while (i < size1) {
+		union[k++] = arr1[i++];
+	}
+	
+	// Found this algorithm online
+	for (j = 0; j < size2; j++) {
+		int found = 0;
+	    for (int l = 0; l < k; l++) {
+	    	if (union[l] == arr2[j]) {
+	        	found = 1;
+	            break;
+	        }
+	    }
+	    if (!found) {
+	 	   uniond[k++] = arr2[j];
+	    }
+	}
+	
+	*new_size = k;	    
+	return union;	 
 }
 
 
