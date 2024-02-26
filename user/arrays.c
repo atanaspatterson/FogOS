@@ -5,7 +5,6 @@
 #include <stddef.h>
 
 
-// insertion sort
 void sort_int_array(int* arr, int size) {
 	for (int i = 1; i < size; i++) {
     	int curr = arr[i];
@@ -55,8 +54,10 @@ void delete_at_index(int** arr, int index, int *size) {
         return;
     }
 
+	// copy the first part until the index to delete, then skip in and copy the rest
     memcpy(new_arr, *arr, index * sizeof(int));
     memcpy(new_arr + index, *arr + index + 1, (*size - index - 1) * sizeof(int));
+
     free(*arr);
 	*size = *size - 1;
     *arr = new_arr;
@@ -74,9 +75,11 @@ void add_at_index(int** arr, int value, int index, int *size) {
         return;
     }
 
+	// copy the first part until the index, add value, then copy the second part
     memcpy(new_arr, *arr, index * sizeof(int));
     new_arr[index] = value;
     memcpy(new_arr + index + 1, *arr + index, (*size - index) * sizeof(int));
+    
     free(*arr);
     *size = *size + 1;
     *arr = new_arr;
@@ -86,6 +89,7 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 	sort_int_array(arr1, size1);
 	sort_int_array(arr2, size2);
 
+	
 	int min = size1 < size2 ? size1: size2;
 	int* intersection = (int*)malloc(sizeof(int) * min);
 	if (intersection == NULL) {
@@ -99,7 +103,7 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 
 	while (i < size1 && j < size2) {
 		if (arr1[i] == arr2[j]) {
-	    	intersection[k++] = arr1[i];  // Add common element to intersection array
+	    	intersection[k++] = arr1[i]; 
 	        i++;
 	        j++;
 	    } else if (arr1[i] < arr2[j]) {
@@ -119,7 +123,7 @@ int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size) {
 
 	int max = size1 > size2 ? size1: size2;
 	int* union_arr = (int*)malloc(sizeof(int) * max);
-	if (union_a == NULL) {
+	if (union_arr == NULL) {
 		printf("malloc could not be called\n");
 		return NULL;
 	}
@@ -128,26 +132,27 @@ int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size) {
 	int j = 0;
 	int k = 0;
 
+	// add all arr1 values
 	while (i < size1) {
-		union[k++] = arr1[i++];
+		union_arr[k++] = arr1[i++];
 	}
 	
-	// Found this algorithm online
+	// Found this algorithm online - adds unique arrr2 values
 	for (j = 0; j < size2; j++) {
 		int found = 0;
 	    for (int l = 0; l < k; l++) {
-	    	if (union[l] == arr2[j]) {
+	    	if (union_arr[l] == arr2[j]) {
 	        	found = 1;
 	            break;
 	        }
 	    }
 	    if (!found) {
-	 	   uniond[k++] = arr2[j];
+	 	   union_arr[k++] = arr2[j];
 	    }
 	}
 	
 	*new_size = k;	    
-	return union;	 
+	return union_arr;	 
 }
 
 

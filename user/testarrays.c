@@ -1,7 +1,6 @@
 #include "kernel/types.h"
 #include "user/user.h"
-#include "arrays.h"
-#include "arrays.c" 
+#include "arrays.h" 
 
 
 // test file
@@ -9,8 +8,6 @@ int main()
 {
 	// test insertion sort
 	int testarray[] = {1, 4, 18, 3, 34, 6, 7, 4, 9};
-	
-	
 	printf("Original: ");
 	print_array(testarray, 9);
 	printf("Sorted: ");
@@ -29,12 +26,15 @@ int main()
 	arr[3] = 4;
 	arr[4] = 5;
 	int arr_size = 5;
+	printf("Before deletion: ");
 	print_array(arr, arr_size);
 	delete_at_index(&arr, 2, &arr_size);
+	printf("After deletion: ");
 	print_array(arr, arr_size); // should print the array without 3	
 
 	// test add at index
 	add_at_index(&arr, 3, 2, &arr_size);
+	printf("After readding 3 at index 2: ");
 	print_array(arr, arr_size); // should print the array with 3
 
 	// test array intersection
@@ -45,9 +45,9 @@ int main()
 
 	// test array union
 	int union_size = 0;
-	int *union = array_union(arr, testarray, arr_size, 9, &union_size);
+	int *union_arr = array_union(arr, testarray, arr_size, 9, &union_size);
 	printf("Union: ");
-	print_array(union, union_size);
+	print_array(union_arr, union_size);
 	
 
 	
