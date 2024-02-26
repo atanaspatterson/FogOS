@@ -6,7 +6,7 @@
 
 
 // insertion sort
-void insertion_sort_int(int* arr, int size) {
+void sort_int_array(int* arr, int size) {
 	for (int i = 1; i < size; i++) {
     	int curr = arr[i];
    		int j = i - 1;
@@ -57,6 +57,7 @@ void delete_at_index(int** arr, int index, int size) {
 
     memcpy(new_arr, *arr, index * sizeof(int));
     memcpy(new_arr + index, *arr + index + 1, (size - index - 1) * sizeof(int));
+    free(*arr);
 
     *arr = new_arr;
 }
@@ -79,5 +80,32 @@ void add_at_index(int** arr, int value, int index, int size) {
     free(*arr);
 
     *arr = new_arr;
+}
+
+int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_size) {
+	sort_int_array(arr1, size1);
+	sort_int_array(arr2, size2);
+
+	int min = size1 < size2 ? size1: size2;
+	int* intersection = (int*)malloc(sizeof(int) * min);
+
+	int i = 0, 
+	j = 0, 
+	k = 0;
+
+	while (i < size1 && j < size2) {
+		if (arr1[i] == arr2[j]) {
+	    	intersection[k++] = arr1[i];  // Add common element to intersection array
+	        i++;
+	        j++;
+	    } else if (arr1[i] < arr2[j]) {
+	        i++;
+	    } else {
+	        j++;
+	    }
+	}
+
+	*new_size = k;
+	return intersection;	 
 }
 

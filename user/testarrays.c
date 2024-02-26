@@ -8,13 +8,13 @@
 int main()
 {
 	// test insertion sort
-	int testarray[] = {1, 4, 18, 3, 2, 6, 7, 4, 9};
+	int testarray[] = {1, 4, 18, 3, 34, 6, 7, 4, 9};
 	
 	
 	printf("Original: ");
 	print_array(testarray, 9);
 	printf("Sorted: ");
-	insertion_sort_int(testarray, 9);
+	sort_int_array(testarray, 9);
 	print_array(testarray, 9);
 
 	// test binary search
@@ -35,6 +35,12 @@ int main()
 	// test add at index
 	add_at_index(&arr, 3, 2, 4);
 	print_array(arr, 5); // should print the array with 3
+
+	// test array intersection
+	int intersection_size = 0;
+	int *intersection = array_intersection(arr, testarray, 5, 9, &intersection_size);
+	print_array(intersection, intersection_size); // should print 1, 3 ,4
+	
 
 	
 
