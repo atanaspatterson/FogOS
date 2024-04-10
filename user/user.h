@@ -41,3 +41,12 @@ void free(void*);
 int atoi(const char*);
 int memcmp(const void *, const void *, uint);
 void *memcpy(void *, const void *, uint);
+
+// array operations
+void print_array(int* arr, int size);
+void sort_int_array(int* arr, int size);
+void delete_at_index(int** arr, int index, int *size);
+void add_at_index(int** arr, int value, int index, int *size);
+int binary_search(int* arr, int target, int size);
+int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size);
+int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_size);

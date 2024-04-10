@@ -1,11 +1,12 @@
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
-#include "arrays.h"
 #include <stddef.h>
 
 
 void sort_int_array(int* arr, int size) {
+	if (arr == NULL)
+		return;
 	for (int i = 1; i < size; i++) {
     	int curr = arr[i];
    		int j = i - 1;
@@ -18,6 +19,8 @@ void sort_int_array(int* arr, int size) {
 }
 
 int binary_search(int* arr, int target, int size) {
+	if (arr == NULL)
+		return;
 	int low = 0;
 	int high = size - 1;
 	
@@ -36,6 +39,8 @@ int binary_search(int* arr, int target, int size) {
 }
 
 void print_array(int* arr, int size) {
+	if (arr == NULL)
+		return;
 	for (int i = 0; i < size; i++) {
     	printf("%d ", arr[i]);
 	}
@@ -43,6 +48,8 @@ void print_array(int* arr, int size) {
 }
 
 void delete_at_index(int** arr, int index, int *size) {
+	if (arr == NULL)
+		return;
     if (index < 0 || index >= *size) {
         printf("Invalid index\n");
         return;
@@ -64,6 +71,8 @@ void delete_at_index(int** arr, int index, int *size) {
 }
 
 void add_at_index(int** arr, int value, int index, int *size) {
+	if (arr == NULL)
+		return;
     if (index < 0 || index > *size) {
         printf("Invalid index.\n");
         return;
@@ -86,6 +95,8 @@ void add_at_index(int** arr, int value, int index, int *size) {
 }
 
 int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_size) {
+	if (arr1 == NULL || arr2 == NULL)
+		return;
 	sort_int_array(arr1, size1);
 	sort_int_array(arr2, size2);
 
@@ -118,6 +129,8 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 }
 
 int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size) {
+	if (arr1 == NULL || arr2 == NULL)
+		return;
 	sort_int_array(arr1, size1);
 	sort_int_array(arr2, size2);
 
