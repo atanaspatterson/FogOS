@@ -51,5 +51,12 @@ int main(int argc, char *argv) {
 	int *union_arr = array_union(arr, testarray, arr_size, 9, &union_size);
 	printf("Union: ");
 	print_array(union_arr, union_size);
+
+	//test union array again
+	printf("UNION II\n");
+	int testarray3[] = {1, 4, 18, 3, 34, 6, 7, 4, 9};
+	int array3[] = {1, 3, 3, 3, 3, 4, 5};
+	int *union_arr2 = array_union(testarray3, array3, 9, 7, &union_size);
+	print_array(union_arr2, union_size);
   	return 0;
 }

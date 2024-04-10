@@ -145,16 +145,27 @@ int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size) {
 		return NULL;
 	}
 
-	int i = 0; 
+	//int i = 0; 
 	int j = 0;
 	int k = 0;
+	int prev = INT_MIN;
 
-	// add all arr1 values
-	while (i < size1) {
-		union_arr[k++] = arr1[i++];
+	// add unique elements of arr1
+	// while (i < size1) {
+	// 	if (arr1[i] != prev) { // Add only unique elements from arr1
+	// 		union_arr[k] = arr1[i];
+	// 	    prev = arr1[i];
+	// 	}
+	// }
+
+	for (int l = 0; l < size1; l++) {
+		if (arr1[l] != prev) {
+			union_arr[k++] = arr1[l];
+			prev = arr1[l];
+		}
 	}
 	
-	// Found this algorithm online - adds unique arrr2 values
+	// Found this algorithm online - adds unique arr2 values
 	for (j = 0; j < size2; j++) {
 		int found = 0;
 	    for (int l = 0; l < k; l++) {
