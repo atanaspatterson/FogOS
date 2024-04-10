@@ -1,0 +1,15 @@
+NAME
+	sort_int_array - basic printing format for int *
+
+SYNOPSIS
+	#include "user/user.h"
+
+	void print_array(int* arr, int size);
+
+DESCRIPTION
+	print_array() prints a given integer array (or a sub-array) from index 0 to size,
+  placing each element side-by-side. print_array() will do an early grace return 
+  if the provided array is NULL.
+
+RETURN VALUE
+	void
