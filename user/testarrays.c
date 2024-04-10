@@ -1,5 +1,6 @@
 #include "kernel/types.h"
 #include "user/user.h"
+#include "limits.h"
 
 
 // test file
@@ -37,9 +38,13 @@ int main(int argc, char *argv) {
 
 	// test array intersection
 	int intersection_size = 0;
+	printf("Test Arrays:\n");
+	print_array(arr, 5);
+	print_array(testarray, 9);
 	int *intersection = array_intersection(arr, testarray, 5, 9, &intersection_size);
 	printf("Intersection: ");
 	print_array(intersection, intersection_size); // should print 1, 3 ,4
+	printf("\n");
 
 	// test array union
 	int union_size = 0;

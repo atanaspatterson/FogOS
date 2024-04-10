@@ -2,6 +2,7 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 #include <stddef.h>
+#include <limits.h>
 
 
 void sort_int_array(int* arr, int size) {
@@ -95,38 +96,41 @@ void add_at_index(int** arr, int value, int index, int *size) {
 }
 
 int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_size) {
-	if (arr1 == NULL || arr2 == NULL)
-		return new_size;
-	sort_int_array(arr1, size1);
-	sort_int_array(arr2, size2);
+  if (arr1 == NULL || arr2 == NULL)
+    return new_size;
 
-	
-	int min = size1 < size2 ? size1: size2;
-	int* intersection = (int*)malloc(sizeof(int) * min);
-	if (intersection == NULL) {
-		printf("malloc could not be called\n");
-		return NULL;
-	}
+  sort_int_array(arr1, size1);
+  sort_int_array(arr2, size2);
 
-	int i = 0; 
-	int j = 0; 
-	int k = 0;
+  int min = size1 < size2 ? size1 : size2;
+  int* intersection = (int*)malloc(sizeof(int) * min);
+  if (intersection == NULL) {
+    printf("malloc could not be called\n");
+    return NULL;
+  }
 
-	while (i < size1 && j < size2) {
-		if (arr1[i] == arr2[j]) {
-	    	intersection[k++] = arr1[i]; 
-	        i++;
-	        j++;
-	    } else if (arr1[i] < arr2[j]) {
-	        i++;
-	    } else {
-	        j++;
-	    }
-	}
-	
-	*new_size = k;
-	return intersection;	 
+  int i = 0;
+  int j = 0;
+  int k = 0;
+  int prev = INT_MIN;
+
+  while (i < size1 && j < size2) {
+    if (arr1[i] == arr2[j] && arr1[i] != prev) { // Check for duplicates
+      intersection[k++] = arr1[i];
+      prev = arr1[i];
+    }
+
+    if (arr1[i] <= arr2[j]) {
+      i++;
+    } else {
+      j++;
+    }
+  }
+
+  *new_size = k;
+  return intersection;
 }
+
 
 int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size) {
 	if (arr1 == NULL || arr2 == NULL)
