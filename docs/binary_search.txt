@@ -1,0 +1,15 @@
+NAME
+	binary_search - search for value in int *
+
+SYNOPSIS
+	#include "user/user.h"
+
+	int binary_search(int* arr, int target, int size);
+
+DESCRIPTION
+	binary_search() performs the search algorithm with the same name (O(logn)) looking for target in an array 
+  with the given size. It will return the index of the found element or -1 if it was not found. 
+  binary_search() will do an early grace return if the provided array is NULL.
+
+RETURN VALUE
+	int (positive array index if found, -1 if not found)
