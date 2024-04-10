@@ -20,7 +20,7 @@ void sort_int_array(int* arr, int size) {
 
 int binary_search(int* arr, int target, int size) {
 	if (arr == NULL)
-		return;
+		return -1;
 	int low = 0;
 	int high = size - 1;
 	
@@ -96,7 +96,7 @@ void add_at_index(int** arr, int value, int index, int *size) {
 
 int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_size) {
 	if (arr1 == NULL || arr2 == NULL)
-		return;
+		return new_size;
 	sort_int_array(arr1, size1);
 	sort_int_array(arr2, size2);
 
@@ -130,7 +130,7 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 
 int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size) {
 	if (arr1 == NULL || arr2 == NULL)
-		return;
+		return new_size;
 	sort_int_array(arr1, size1);
 	sort_int_array(arr2, size2);
 
