@@ -1,0 +1,15 @@
+NAME
+	sort_int_array - insertion sort for int *
+
+SYNOPSIS
+	#include "user/user.h"
+
+	void sort_int_array(int* arr, int size)
+
+DESCRIPTION
+	sort_int_array() sorts a given integer array (or a sub-array) from index 0 to size.
+  The used algorithm is insertion sort (O(n^2) worst, O(n) best). sort_int_array() will
+  do an early grace return if the provided array is NULL.
+
+RETURN VALUE
+	void
