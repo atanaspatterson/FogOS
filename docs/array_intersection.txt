@@ -9,7 +9,8 @@ SYNOPSIS
 DESCRIPTION
 	array_intersection() finds the intersection of two sorted integer arrays `arr1` and `arr2`. The intersection 
   includes elements that exist in both arrays. The function also removes duplicates from the resulting intersection.
-  array_intersection() will do an early return if either of the provided arrays is NULL.
+  array_intersection() will do an early return if either of the provided arrays is NULL. The memory allocation done
+  in the function must be freed in the caller method.
 
 RETURN VALUE
 	int* (pointer to a new array containing the intersection elements) or NULL (either array is null or allocation failure)
