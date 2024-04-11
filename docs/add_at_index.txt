@@ -7,9 +7,10 @@ SYNOPSIS
 	void add_at_index(int** arr, int index, int *size);
 
 DESCRIPTION
-	delete_at_index() adds the element at the specified index from the provided int array. It resizes 
+  delete_at_index() adds the element at the specified index from the provided int array. It resizes 
   the array to accommodate the addition with malloc and updates the size pointer accordingly. add_at_index() 
-  will do an early grace return if the provided array is NULL.
+  will do an early grace return if the provided array is NULL. The memory allocation done in the function 
+  must be freed in the caller method.
 
 RETURN VALUE
 	void
