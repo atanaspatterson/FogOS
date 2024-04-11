@@ -1,0 +1,15 @@
+NAME
+	array_union - find union of two sorted int arrays
+
+SYNOPSIS
+	#include <user/user.h>
+
+	int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size);
+
+DESCRIPTION
+	array_union() finds the union of two sorted integer arrays `arr1` and `arr2`. The union 
+  includes elements that exist in either arrays. The function also removes duplicates from the resulting intersection.
+  array_union() will do an early return if either of the provided arrays is NULL.
+
+RETURN VALUE
+	int* (pointer to a new array containing the intersection elements) or NULL (either array is null or allocation failure)
