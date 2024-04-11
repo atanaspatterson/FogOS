@@ -1,0 +1,15 @@
+NAME
+	array_intersection - find intersection of two sorted int arrays
+
+SYNOPSIS
+	#include <user/user.h>
+
+	int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_size);
+
+DESCRIPTION
+	array_intersection() finds the intersection of two sorted integer arrays `arr1` and `arr2`. The intersection 
+  includes elements that exist in both arrays. The function also removes duplicates from the resulting intersection.
+  array_intersection() will do an early return if either of the provided arrays is NULL.
+
+RETURN VALUE
+	int* (pointer to a new array containing the intersection elements) or NULL (either array is null or allocation failure)
