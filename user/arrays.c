@@ -97,7 +97,7 @@ void add_at_index(int** arr, int value, int index, int *size) {
 
 int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_size) {
   if (arr1 == NULL || arr2 == NULL)
-    return new_size;
+    return NULL;
 
   sort_int_array(arr1, size1);
   sort_int_array(arr2, size2);
@@ -134,7 +134,7 @@ int* array_intersection(int* arr1, int* arr2, int size1, int size2, int *new_siz
 
 int* array_union(int* arr1, int* arr2, int size1, int size2, int *new_size) {
 	if (arr1 == NULL || arr2 == NULL)
-		return new_size;
+		return NULL;
 	sort_int_array(arr1, size1);
 	sort_int_array(arr2, size2);
 
