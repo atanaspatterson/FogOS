@@ -9,7 +9,8 @@ SYNOPSIS
 DESCRIPTION
 	delete_at_index() removes the element at the specified index from the provided int array. It resizes 
   the array to accommodate the deletion with malloc and updates the size pointer accordingly. delete_at_index() 
-  will do an early grace return if the provided array is NULL.
+  will do an early grace return if the provided array is NULL. The memory allocation done in the function 
+  must be freed in the caller method.
 
 RETURN VALUE
 	void
